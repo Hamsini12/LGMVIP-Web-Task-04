@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<style>
+    video{
+        position:fixed;
+        top:0;
+        left:0;
+        right:0;
+        bottom:0;
+        min-width:100%;
+        min-height:100%;
+    }
+    .video-container{
+        width:300px;
+        height:300px;
+        position:relative;
+        overflow:hidden;
+        display:flex;
+        align-items:center;
+    } 
+    .header{
+        position: fixed;
+        width:100%;
+        margin-top:250px;
+        left:0;
+        right:0;
+    }
+    h1{
+        text-align:center;
+        margin-top:70px;
+
+    }
+    h1::first-letter{
+        font-size:88px;
+        font-family:Cambria,serif;
+        color:crimson;
+    }
+    h1::first-line{
+        color:#FFDF00;
+    }
+    .bouncetext{
+        animation:bouncing 0.6s ease infinite alternate;
+    }
+    @keyframes bouncing{
+        0%{
+            transform:translateY(0px);
+        }
+        100%{
+            transform:translateY(20px);
+        }
+    }
+    .calculator{
+        padding:25px;
+        border-radius:0.8em;
+        height:450px;
+        width:380px;
+        margin:auto;
+        margin-top:20px;
+        border:2.5px solid #8A9A5B;
+    }
+    
+    .display-box{
+        width:90%;
+        height:50%;
+        border-radius:97px;
+        border:none;
+        background-color:#F8B88B;
+        font-family:Britanic;
+        font-size:1.5em;
+        color:#7D0552;
+        padding-left:13px;
+    }
+    #btn{
+        background:crimson;
+    }
+    input[type=button]{
+        width:85%;
+        height:62%;
+        border-radius:90px;
+        border:none;
+        background:linear-gradient(to right,red,orange);
+        font-family:Britannic;
+        font-size:18px;
+        color:black;
+    }
+</style>
+<body>
+<div class="video-container">
+  <video playsinline autoplay muted loop>
+    <source src="https://cdn.pixabay.com/vimeo/135919105/smoke-306.mp4?width=480&hash=1f8dcdf78c45769cf2b9034ccc24f990aa209c6a">
+  </video>
+<div class="header">
+    <h1 class="bouncetext">CALCULATOR</h1>
+    <table class="calculator">
+        <tr>
+            <td colspan="3"> <input class="display-box" type="text" id="result" disabled/></td>
+            <td><input type="button" value="AC" onclick="clearScreen()" id="btn" /></td>
+        </tr>
+        <tr>
+            <td><input type="button" value="7" onclick="display('7')" /></td>
+            <td><input type="button" value="8" onclick="display('8')" /></td>
+            <td><input type="button" value="9" onclick="display('9')" /></td>
+            <td><input type="button" value="/" onclick="display('/')" /></td>
+        </tr>
+        <tr>
+            <td><input type="button" value="4" onclick="display('4')" /></td>
+            <td><input type="button" value="5" onclick="display('5')" /></td>
+            <td><input type="button" value="6" onclick="display('6')" /></td>
+            <td><input type="button" value="*" onclick="display('*')" /></td>
+        </tr>
+        <tr>
+            <td><input type="button" value="1" onclick="display('1')" /></td>
+            <td><input type="button" value="2" onclick="display('2')" /></td>
+            <td><input type="button" value="3" onclick="display('3')" /></td>
+            <td><input type="button" value="-" onclick="display('-')" /></td>
+        </tr>
+        <tr>
+            <td><input type="button" value="0" onclick="display('0')" /></td>
+            <td><input type="button" value="." onclick="display('.')" /></td>
+            <td><input type="button" value="=" onclick="calculate()" id="btn" /></td>
+            <td><input type="button" value="+" onclick="display('+')" /></td>
+        </tr>
+    </table>  
+</div>
+</div>
+<script>
+    function clearScreen(){
+        document.getElementById("result").value="";
+    }
+    function display(value){
+        document.getElementById("result").value+=value;
+    }
+    function calculate(){
+        var a=document.getElementById("result").value;
+        var b=eval(a);
+        document.getElementById("result").value=b;
+    }
+</script>
+</body>
+</html>
